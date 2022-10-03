@@ -16,7 +16,6 @@ var  vowels2 = str => {
 console.log(vowels2(bStr));
 
 
-
 function vowels(str) {
     let v ='аиеёоуыэюя';
     let count = [...str].filter(vow => 
@@ -24,4 +23,22 @@ function vowels(str) {
 return count;
 }
 console.log(vowels(bStr));
+
+function vowels4(str) {
+    let v = "аоиеёэыуюя";
+    let count = [...str].reduce((a, b) => v.includes(b) ? a + 1 : a, 0);
+    return count;
+}
+
+function vowels2(str) {
+    let v = "аоиеёэыуюя";
+    let count = 0;
+    [...str].forEach(char => {
+        if (v.includes(char))
+            ++count;
+    });
+    return count;
+}
+
+
 
