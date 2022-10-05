@@ -1,3 +1,4 @@
+"use strict"
 var str = prompt('Введите строку');
 
 function vowels(str) {
