@@ -9,4 +9,4 @@ https://chieka0903.github.io/it-akademy/N10_MOOD/
 
 https://chieka0903.github.io/it-akademy/N20_ROOTS/
 
-https://chieka0903.github.io/it-akademy/N13_DRINK/
+https://chieka0903.github.io/it-akademy/N13_DRINKS/

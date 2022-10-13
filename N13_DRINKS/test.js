@@ -36,7 +36,7 @@ function addDrink( ) {
         a: alco
     }
     drinkStorage.addValue(drinkName,info);
-   
+   console.log(drinkStorage.getValue(drinkName,info))
 }
 
 function getDrink() {
@@ -50,14 +50,12 @@ function getDrink() {
 
 function deleteDrink() {
     let drinkName = prompt ('Введите название напитка');
-    drinkStorage.deleteValue();
+    alert(drinkStorage.deleteValue());
 }
 
 function allDrinks() {
-   drinkStorage.getKeys();
-    alert('Название напитка: ' + drinkName + `\n` +
-                'Рецепт напитка: ' + drinkRecept + `\n` +
-                'Алкогольный: ' + alco + `\n`);
+   alert(drinkStorage.getKeys());
+  
 }
 
 
