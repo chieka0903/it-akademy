@@ -36,24 +36,26 @@ let drinkStorage = new HashStorageFunc;
 function addDrink( ) {
     let drinkName = prompt ('Введите название напитка');
     let drinkRecept = prompt ('Ведите рецепт напитка');
-    let alco = confirm ('напиток алкогольный?');
-    
-    drinkStorage.addValue(drinkName,{drinkRecept, alco});
-   console.log(drinkStorage.getValue(drinkName));
+    let alco = confirm ('напиток алкогольный? Если ДА, нажмите ОК, если НЕТ, нажмите ОТМЕНА');
+    let info = {
+        a: alco,
+        r: drinkRecept
+    };
+    drinkStorage.addValue(drinkName,info);
 }
 
 function getDrink() {
     let drinkName = prompt ('Введите название напитка');
-    drinkStorage.getValue(drinkName);
-    console.log('название напитка ' + drinkName + `\n` +
-                'Рецепт приготовления ' + this.drinkRecept + `\n` +
-                'Алкогольный ' + drinkStorage.alco);
-       
+    let printedDrinkname = drinkStorage.getValue(drinkName);
+       console.log('название напитка: ' + drinkName + `\n` +
+                    'Рецепт напитка: ' + printedDrinkname.r + `\n` +
+                    'Алкогольный: ' + printedDrinkname.a );
     }
-
+    
+       
 function deleteDrink() {
-    prompt ('Введите название напитка');
-    drinkStorage.deleteValue();
+   let drinkName = prompt ('Введите название напитка');
+   console.log(drinkStorage.deleteValue(drinkName));
 }
 
 function allDrinks() {
