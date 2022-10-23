@@ -27,9 +27,7 @@ class HashStorageFunc {
         return Object.keys(this.storage);
     }
 
-    toString() {
-        return drinkStorage.getValue;
-       }
+   
                 
 }
 
@@ -48,11 +46,12 @@ function addDrink( ) {
 
 function getDrink() {
     let drinkName = prompt ('Введите название напитка');
-    let printedDrinkname = drinkStorage.getValue(drinkName);
-       console.log('название напитка: ' + drinkName + `\n` +
-                    'Рецепт напитка: ' + printedDrinkname.r + `\n` +
-                    'Алкогольный: ' + printedDrinkname.a );
-    }
+    let printedDrinkName = drinkStorage.getValue(drinkName);
+    let infoDrinkName = (printedDrinkName===undefined)?  alert('нет напитка'):  
+        console.log('название напитка: ' + drinkName + `\n` +
+                    'Рецепт напитка: ' + printedDrinkName.r + `\n` +
+                    'Алкогольный: ' + printedDrinkName.a );             
+}
     
        
 function deleteDrink() {
