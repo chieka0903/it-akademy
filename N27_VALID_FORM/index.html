@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>validate_form</title>
+    
+</head>
+<body>
+<main>
+    <form id="valid" name="valid" action="https://fe.it-academy.by/TestForm.php" method="post">
+        <table>
+            <tbody>
+            <tr>
+                <td>Разработчики:</td>
+                <td><input class="long-text field" id="developers" name="developers"
+                           type="text" ><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Название сайта:</td>
+                <td><input class="long-text field" id="site"
+                           name="site" type="text" ><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>URL сайта:</td>
+                <td><input class="long-text field" id="url"
+                           name="url" type="text" ><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Дата запуска сайта:</td>
+                <td><input class="short-text field" id="date"
+                           name="date" type="text" ><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Посетителей в сутки:</td>
+                <td><input class="short-text field" id="visitors"
+                           name="visitors" type="text" ><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>E-mail для связи:</td>
+                <td><input class="long-text field" id="email"
+                           name="email" type="text" ><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Рубрика каталога:</td>
+                <td>
+                    <select class="rubric field" id="rubric" name="rubric">
+                        <option value="0" disabled selected>бытовая техника</option>
+                        <option value="1">здоровье</option>
+                        <option value="2">домашний уют</option>
+                    </select>
+                    <span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Размещение</td>
+                <td class="bordered">
+                    <input class="payment field" name="payment" type="radio" value="1">бесплатное
+                    <input class="payment field" name="payment" type="radio" value="2">платное
+                    <input class="payment field" name="payment" type="radio" value="3">VIP
+                    <span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Разрешить отзывы:</td>
+                <td><input class="reviews field" id="reviews"
+                           name="reviews" type="checkbox"><span></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Описание сайта:<br>
+                    <textarea class="text-area field" id="description" name="description"
+                              rows="5" ></textarea>
+                    <span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" value="Опубликовать">Опубликовать</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

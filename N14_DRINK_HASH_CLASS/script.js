@@ -47,16 +47,19 @@ function addDrink( ) {
 function getDrink() {
     let drinkName = prompt ('Введите название напитка');
     let printedDrinkName = drinkStorage.getValue(drinkName);
-    let infoDrinkName = (printedDrinkName===undefined)?  alert('нет напитка'):  
-        console.log('название напитка: ' + drinkName + `\n` +
+    (printedDrinkName===undefined)?  alert('Данного напитка нет в базе'):  
+        alert('название напитка: ' + drinkName + `\n` +
                     'Рецепт напитка: ' + printedDrinkName.r + `\n` +
                     'Алкогольный: ' + printedDrinkName.a );             
+        
 }
-    
+       
+
        
 function deleteDrink() {
-   let drinkName = prompt ('Введите название напитка');
-   console.log(drinkStorage.deleteValue(drinkName));
+   let drinkName = prompt ('Введите название напитка, который хотите удалить');
+   drinkStorage.deleteValue(drinkName)? alert(`Данный напиток удален`) 
+    : alert(`Напиток не удален, его нет в базе`);
 }
 
 function allDrinks() {
