@@ -3,7 +3,7 @@
     let form = document.forms['valid'];
     let fields = form.elements;
 
-    //Обработчик всей формы
+    
     form.addEventListener('submit', (eo) => {
         eo = eo || window.event;
         try {

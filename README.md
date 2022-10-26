@@ -14,3 +14,5 @@ https://chieka0903.github.io/it-akademy/N13_DRINK_HASH/
 https://chieka0903.github.io/it-akademy/N14_DRINK_HASH_CLASS/ 
 
 https://chieka0903.github.io/it-akademy/N23_DYN_FORM/
+
+https://chieka0903.github.io/it-akademy/N27_VALID_FORM/
