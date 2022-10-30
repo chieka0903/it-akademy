@@ -42,6 +42,7 @@ function work() {
 
         document.addEventListener('mouseup', eo => {
             document.removeEventListener('mousemove', move);
+            document.removeEventListener('mouseup', move);
         });
     });
 
