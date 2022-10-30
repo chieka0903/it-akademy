@@ -14,7 +14,12 @@ function work() {
 
             currentImg.style.left = startX + 'px';
             currentImg.style.top = startY + 'px';
-            currentImg.style.position = 'absolute';
+        }
+
+        for (let i = images.length - 1; 0 <= i ; i--) {
+            let currentImg = images[i];
+
+        currentImg.style.position = 'absolute';
         }
 
     let zIndex = 1;
