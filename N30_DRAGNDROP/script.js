@@ -40,10 +40,12 @@ function work() {
             img.style.top = eo.pageY - offsetY + 'px';
         }
 
-        document.addEventListener('mouseup', eo => {
+        img.onmouseup = function () {
             document.removeEventListener('mousemove', move);
-            document.removeEventListener('mouseup', move);
-        });
+            img.onmouseup = null;
+        }
+        
+        
     });
 
     document.addEventListener('dragstart', eo => {
