@@ -18,3 +18,7 @@ https://chieka0903.github.io/it-akademy/N23_DYN_FORM/
 https://chieka0903.github.io/it-akademy/N27_VALID_FORM/
 
 https://chieka0903.github.io/it-akademy/N30_DRAGNDROP/ 
+
+https://chieka0903.github.io/it-akademy/N40_CLOCK_CANVAS/
+
+https://chieka0903.github.io/it-akademy/N37_CLOCK_SVG/
