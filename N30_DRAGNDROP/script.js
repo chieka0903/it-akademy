@@ -45,7 +45,6 @@ function work() {
             img.onmouseup = null;
         }
         
-        
     });
 
     document.addEventListener('dragstart', eo => {

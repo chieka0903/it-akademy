@@ -5,16 +5,36 @@
     <title>clock_svg</title>
 </head>
 <body>
-<div class="container">
+ 
+<form name = circle id="Form" >
+        Расстояние (диаметр):
+        <input type=text name=Diametr id="Diameter"  value='500'><br />
+        <input type=button value='построить часы' id="click"  onclick='add()'>
+</form>
+<br>
+<div class="container" id=containerOn>
 
 </div>
+    
+
 <script>
     "use strict";
+    
+    let formElem = document.getElementById('Form');
+    let clickElem = document.getElementById('click');
+    clickElem.addEventListener('click', function(eo){
+        document.getElementById('containerOn').style.display = "block";
+        formElem.style.display = 'none';
 
+    });
+    
+
+function add () {
+    
     let container = document.querySelector('.container');
     // Размер часов
-    let containerCenterX = 300;
-    let containerCenterY = 300;
+    let containerCenterX = document.getElementById('Diameter').value;
+    let containerCenterY = document.getElementById('Diameter').value;
 
     // Создание контейнера для часов
     let clockContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -196,6 +216,9 @@
     }
 
     updateTime();
+}
+
+
 </script>
 </body>
 </html>
