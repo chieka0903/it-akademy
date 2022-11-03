@@ -2,177 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>clock_svg</title>
+    <title>clock_canvas</title>
 </head>
 <body>
-<div class="container">
 
+    <form name = circle id="Form" >
+        Расстояние (диаметр):
+        <input type=text name=Diametr id="Diameter"  value='500'><br />
+        <input type=button value='построить часы' id="click"  onclick='add()'>
+</form>
+<br>
+<div class="container" id=containerOn>
 </div>
+
 <script>
     "use strict";
+    let formElem = document.getElementById('Form');
+    let clickElem = document.getElementById('click');
+    clickElem.addEventListener('click', function(eo){
+        document.getElementById('containerOn').style.display = "block";
+        formElem.style.display = 'none';
 
+    });
+    
+
+function add () {
     let container = document.querySelector('.container');
-    // Размер часов
-    let containerCenterX = 300;
-    let containerCenterY = 300;
+    // Размеры часов
+    const CLOCK_SIDE = document.getElementById('Diameter').value;; // Сторона
+    const HOURS = 12; // Количество часов
+
+    const CLOCK_CENTER_X = CLOCK_SIDE / 2; // Центр X
+    const CLOCK_CENTER_Y = CLOCK_SIDE / 2; // Центр Y
+    const CLOCK_RADIUS = CLOCK_SIDE / 2; // Радиус
+
+    const DIAL_SIDE_PROPORTION = CLOCK_SIDE / 20; // Размер элемента циферблата
+    const DIAL_RADIUS_PROPORTION = CLOCK_CENTER_X * 0.85; // Радиус элемента циферблата
+
+    const SECONDS_WIDTH = CLOCK_CENTER_X * 0.02; // Ширина секундной стрелки
+    const SECONDS_HEIGHT = CLOCK_CENTER_X * 0.9; // Высота секундной стрелки
+
+    const MINUTES_WIDTH = CLOCK_CENTER_X * 0.04; // Ширина минутной стрелки
+    const MINUTES_HEIGHT = CLOCK_CENTER_X * 0.8; // Высота минутной стрелки
+
+    const HOURS_WIDTH = CLOCK_CENTER_X * 0.06; // Ширина часовой стрелки
+    const HOURS_HEIGHT = CLOCK_CENTER_X * 0.5; // Высота часовой стрелки
+
+    const ARROW_OFFSET = CLOCK_SIDE / 2 / 10; // Смещение стрелок
 
     // Создание контейнера для часов
-    let clockContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    clockContainer.setAttribute('id', 'clock-container');
-    clockContainer.setAttribute('width', containerCenterX);
-    clockContainer.setAttribute('height', containerCenterY);
-    container.append(clockContainer);
+    function createClockContainer() {
+        let container = document.querySelector('.container');
 
-    const CLOCK_CENTER_X = String(clockContainer.clientWidth / 2);
-    const CLOCK_CENTER_Y = String(clockContainer.clientHeight / 2);
-    const CLOCK_RADIUS = String(clockContainer.clientHeight / 2);
+        let clockContainer = document.createElement('canvas');
+        clockContainer.setAttribute('id', 'clock-container');
+        clockContainer.width = CLOCK_SIDE;
+        clockContainer.height = CLOCK_SIDE;
+
+        container.append(clockContainer);
+
+        return clockContainer.getContext('2d');
+    }
+
+    let context = createClockContainer();
 
     // Создание часов
     function createClock() {
-        let clock = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        clock.setAttribute('id', 'clock');
-
-        clock.setAttribute('cx', CLOCK_CENTER_X);
-        clock.setAttribute('cy', CLOCK_CENTER_Y);
-        clock.setAttribute('r', CLOCK_RADIUS);
-
-        clock.setAttribute('fill', '#fccb66');
-
-        clockContainer.append(clock);
-        return clock;
+        context.beginPath();
+        context.arc(CLOCK_CENTER_X, CLOCK_CENTER_Y, CLOCK_RADIUS, 0, Math.PI * 2, false);
+        context.fillStyle = '#fccb66';
+        context.fill();
     }
 
-    const CLOCK = createClock();
-    const CLOCK_SIZE = CLOCK.getBoundingClientRect();
-    const CLOCK_SIDE = CLOCK_SIZE.width;
-    const CLOCK_RADIUS_X = CLOCK_SIZE.width / 2;
-    const CLOCK_RADIUS_Y = CLOCK_SIZE.height / 2;
-
-    const DIAL_SIDE_PROPORTION = String(CLOCK_SIDE / 20);
-    const DIAL_RADIUS_PROPORTION = String(CLOCK_RADIUS_X * 0.85);
-
-    const SECONDS_HEIGHT = String(CLOCK_RADIUS_X * 0.1);
-    const SECONDS_STROKE = String(CLOCK_RADIUS_X * 0.02);
-
-    const MINUTES_HEIGHT = String(CLOCK_RADIUS_X * 0.2);
-    const MINUTES_STROKE = String(CLOCK_RADIUS_X * 0.04);
-
-    const HOURS_HEIGHT = String(CLOCK_RADIUS_X * 0.5);
-    const HOURS_STROKE = String(CLOCK_RADIUS_X * 0.06);
-
-    const ARROW_PROPORTION = CLOCK_SIDE / 2 / 10;
 
     // Циферблат
-    function getDialElements() {
-        // Элемент циферблата
-        function createDialElement() {
-            let dialElement = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-            dialElement.setAttribute('r', DIAL_SIDE_PROPORTION);
-            dialElement.setAttribute('fill', '#46b483');
-
-            clockContainer.append(dialElement);
-            return dialElement;
-        }
-
-        // Элемент с текстом
-        function getText() {
-            let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-
-            text.setAttribute('fill', 'black')
-            text.setAttribute('font-size', String(CLOCK_SIDE / 20));
-            text.setAttribute('text-anchor', 'middle');
-
-            clockContainer.append(text);
-            return text;
-        }
-
+    function createDialElements() {
         // Добавление элементов циферблата с текстом
-        for (let i = 12; i >= 1; i--) {
-            let dialElement = createDialElement();
-            let text = getText();
+        for (let i = HOURS; i >= 1; i--) {
 
-            let angle = (360 / 12) / 180 * Math.PI * i;
+            // Угол
+            let angle = (360 / HOURS) / 180 * Math.PI * i;
 
-            let ElementCenterX = CLOCK_RADIUS_X + DIAL_RADIUS_PROPORTION * Math.sin(angle);
-            let ElementCenterY = CLOCK_RADIUS_Y - DIAL_RADIUS_PROPORTION * Math.cos(angle);
+            // Центр X, Y каждого элемента
+            let elementCenterX = CLOCK_CENTER_X + DIAL_RADIUS_PROPORTION * Math.sin(angle);
+            let elementCenterY = CLOCK_CENTER_Y - DIAL_RADIUS_PROPORTION * Math.cos(angle);
 
-            dialElement.setAttribute('cx', String(ElementCenterX - (dialElement.clientWidth / 2)));
-            dialElement.setAttribute('cy', String(ElementCenterY - (dialElement.clientHeight / 2)));
+            // Круг
+            context.beginPath();
+            context.arc(elementCenterX, elementCenterY, DIAL_SIDE_PROPORTION, 0, Math.PI * 2, false);
+            context.fillStyle = '#46b483';
+            context.fill();
 
-            text.setAttribute('x', String(ElementCenterX - (dialElement.clientWidth / 2)));
-            text.setAttribute('y', String(ElementCenterY + (DIAL_SIDE_PROPORTION / 3) - (dialElement.clientHeight / 2)));
-            text.textContent = String(i);
+            // Текст
+            context.font = `normal ${CLOCK_SIDE / 20}px Arial`;
+            context.fillStyle = 'black';
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText(String(i), elementCenterX, elementCenterY);
         }
     }
 
     // Цифровые часы
-    function getDigitalClock() {
-        let digitalClock = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    function createDigitalClock(seconds, minutes, hours) {
+        context.beginPath();
+        context.font = `normal ${CLOCK_SIDE / 15}px Arial`;
+        context.fillStyle = 'black';
 
-        digitalClock.setAttribute('x', String(CLOCK_SIDE / 2));
-        digitalClock.setAttribute('y', String(CLOCK_SIDE / 3));
-
-        digitalClock.setAttribute('font-size', String(CLOCK_SIDE / 15));
-        digitalClock.setAttribute('text-anchor', 'middle');
-
-        clockContainer.append(digitalClock);
-        return digitalClock;
+        context.fillText(`${hours} : ${minutes} : ${seconds}`, CLOCK_CENTER_X, CLOCK_SIDE / 3);
     }
 
     // Создание стрелок
-    function createArrow() {
-        let arrow = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    function createArrow(width, height, arrowAngle) {
+        let angle = arrowAngle / 180 * Math.PI;
+        let x1 = CLOCK_CENTER_X - ARROW_OFFSET * Math.sin(angle);
+        let y1 = CLOCK_CENTER_Y + ARROW_OFFSET * Math.cos(angle);
+        let x2 = CLOCK_CENTER_X + height * Math.sin(angle);
+        let y2 = CLOCK_CENTER_Y - height * Math.cos(angle);
 
-        arrow.setAttribute('x1', String(CLOCK_RADIUS_X));
-        arrow.setAttribute('x2', String(CLOCK_RADIUS_X));
-        arrow.setAttribute('y2', String(CLOCK_RADIUS_Y + ARROW_PROPORTION));
-
-        arrow.setAttribute('stroke', 'black');
-        arrow.setAttribute('stroke-linecap', 'round');
-        arrow.setAttribute('opacity', '80%');
-
-        arrow.style.transformOrigin = '50% 50%';
-
-        clockContainer.append(arrow);
-        return arrow;
+        context.beginPath();
+        context.lineWidth = width;
+        context.lineCap = 'round';
+        context.moveTo(x1, y1);
+        context.lineTo(x2, y2);
+        context.strokeStyle = 'rgba(0, 0, 0, 0.7)';
+        context.stroke();
     }
-
-    // Секундная стрелка
-    function getSecondsArrow() {
-        let secondsArrow = createArrow();
-
-        secondsArrow.setAttribute('y1', SECONDS_HEIGHT);
-        secondsArrow.setAttribute('stroke-width', SECONDS_STROKE);
-
-        return secondsArrow;
-    }
-
-    // Минутная стрелка
-    function getMinutesArrow() {
-        let minutesArrow = createArrow();
-
-        minutesArrow.setAttribute('y1', MINUTES_HEIGHT);
-        minutesArrow.setAttribute('stroke-width', MINUTES_STROKE);
-
-        return minutesArrow;
-    }
-
-    // Часовая стрелка
-    function getHoursArrow() {
-        let hoursArrow = createArrow();
-
-        hoursArrow.setAttribute('y1', HOURS_HEIGHT);
-        hoursArrow.setAttribute('stroke-width', HOURS_STROKE);
-
-        return hoursArrow;
-    }
-
-    getDialElements();
-    let digitalClock = getDigitalClock();
-    let secondsArrow = getSecondsArrow();
-    let minutesArrow = getMinutesArrow();
-    let hoursArrow = getHoursArrow();
 
     // Обновление времени
     function updateTime() {
@@ -184,18 +138,23 @@
 
         let secondsAngle = seconds * (360 / 60);
         let minutesAngle = minutes * (360 / 60) + seconds * (360 / 60 / 60);
-        let hoursAngle = hours * (360 / 12) + minutes * (360 / 12 / 60);
+        let hoursAngle = hours * (360 / HOURS) + minutes * (360 / HOURS / 60);
 
-        digitalClock.textContent = `${hours} : ${minutes} : ${seconds}`;
+        createClock();
+        createDialElements();
 
-        hoursArrow.style.transform = `rotate(${hoursAngle}deg)`;
-        minutesArrow.style.transform = `rotate(${minutesAngle}deg)`;
-        secondsArrow.style.transform = `rotate(${secondsAngle}deg)`;
+        createArrow(SECONDS_WIDTH, SECONDS_HEIGHT, secondsAngle);
+        createArrow(MINUTES_WIDTH, MINUTES_HEIGHT, minutesAngle);
+        createArrow(HOURS_WIDTH, HOURS_HEIGHT, hoursAngle);
+
+        createDigitalClock(seconds, minutes, hours);
 
         setTimeout(updateTime, 1020 - time.getMilliseconds());
     }
 
     updateTime();
+}
+
 </script>
 </body>
 </html>
