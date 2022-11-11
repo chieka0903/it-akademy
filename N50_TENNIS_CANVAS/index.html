@@ -10,7 +10,7 @@
 
     /**
      * @class Button
-     * button for start tennis game
+     * кнопка старт
      */
     class StartButton {
         /**
@@ -23,14 +23,14 @@
             button.style.top = '30px';
             button.style.left = '30px';
             button.style.width = '100px';
-            button.innerHTML = 'Start';
+            button.innerHTML = 'Старт!';
             document.body.append(button);
         }
     }
 
     /**
      * @class ScoreTable
-     * table for score player one, player two
+     * таблица счета
      */
     class ScoreTable {
         /**
@@ -50,7 +50,7 @@
             let scoreTable = document.createElement('div');
             scoreTable.classList.add('score-table');
             scoreTable.style.width = '100px';
-            scoreTable.style.border = '1px solid black';
+           // scoreTable.style.border = '1px solid black';
             scoreTable.style.borderRadius = '10%';
 
             scoreTable.style.marginLeft = '250px';
@@ -122,7 +122,7 @@
     /**
      * @class Field
      * @extends Container
-     * tennis field
+     * тенисное поле
      */
     class Field extends Container {
 
@@ -140,8 +140,14 @@
          */
         draw() {
             this.context.beginPath();
-            this.context.fillStyle = 'green';
-            this.context.fillRect(0, 0, 600, 350);
+            this.context.rect(0, 0, 600, 350);
+            this.context.closePath();
+            this.context.strokeStyle = "black";
+            this.context.fillStyle = "yellow";
+            this.context.fill ();
+            this.context.stroke ();
+            
+            
         }
     }
 
@@ -165,7 +171,7 @@
             super();
             this.context = this.getContext();
             this.playerWidth = 10;
-            this.playerHeight = 50;
+            this.playerHeight = 90;
             this.playerTop = this.containerHeight / 2 - this.playerHeight / 2;
             this.playerLeft = 0;
             this.speed = 0;
@@ -177,7 +183,7 @@
          */
         draw(isFirstPlayer) {
             this.context.beginPath();
-            this.context.fillStyle = 'black';
+            this.context.fillStyle = 'green';
             if (isFirstPlayer) {
                 this.context.fillRect(this.playerLeft, this.playerTop, this.playerWidth, this.playerHeight);
             } else {
@@ -203,7 +209,7 @@
     /**
      * @class Ball
      * @extends Container
-     * ball for tennis
+     * мячик
      */
     class Ball extends Container {
 
@@ -242,7 +248,7 @@
          */
         draw() {
             this.context.beginPath();
-            this.context.fillStyle = 'yellow';
+            this.context.fillStyle = 'red';
             this.context.arc(this.ballCenterX, this.ballCenterY, this.ballRadius, 0, Math.PI * 2, false);
             this.context.fill();
         }

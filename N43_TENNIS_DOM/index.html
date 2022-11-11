@@ -17,12 +17,11 @@
 
     const FIELD_WIDTH = 600; // Ширина поля
     const FIELD_HEIGHT = 350; // Высота поля
-    const FIELD_BACKGROUND = 'url("tennis.jpg")'; // Фон поля
+   
+    const RACKET_WIDTH = 10; // Ширина ракетки
+    const RACKET_HEIGHT = 90; // Высота ракетки
 
-    const RACKET_WIDTH = 20; // Ширина ракетки
-    const RACKET_HEIGHT = 60; // Высота ракетки
-
-    const BALL_RADIUS = 20; // Радиус мячика
+    const BALL_RADIUS = 30; // Радиус мячика
     const BALL_BACKGROUND = 'url("ball.png")'; // Фон мячика
 
     // Таблица очков
@@ -39,7 +38,7 @@
             this.element.style.height = height + 'px';
             this.element.style.margin = '0 auto 10px';
 
-            this.element.style.border = '1px solid black';
+            
 
             this.element.style.fontSize = '40px';
             this.element.textContent = `${this.firstPlayerScore} : ${this.secondPlayerScore}`;
@@ -72,8 +71,8 @@
             this.element.classList.add('field');
             this.element.style.width = width + 'px';
             this.element.style.height = height + 'px';
-
-            this.element.style.backgroundImage = FIELD_BACKGROUND;
+            this.element.style.background = 'yellow';
+            this.element.style.border = '1px solid black';
             this.element.style.backgroundRepeat = 'no-repeat';
             this.element.style.backgroundSize = '100% 100%';
 
@@ -105,7 +104,7 @@
         build(width, height, isFirstPlayer) {
             this.element.style.width = width + 'px';
             this.element.style.height = height + 'px';
-            this.element.style.backgroundColor = 'black';
+            this.element.style.backgroundColor = 'green';
             this.element.style.position = 'absolute';
             this.element.style.transform = 'translateZ(0)';
 
@@ -198,7 +197,7 @@
             this.element.style.height = BALL_RADIUS + 'px';
             this.element.style.borderRadius = '50%';
 
-            this.element.style.backgroundImage = 'url("ball.png")';
+            this.element.style.background = 'red';
             this.element.style.transform = 'translateZ(0)';
             this.element.style.position = 'absolute';
             this.element.style.left = field.left + (field.width / 2) - (radius / 2) + 'px';
@@ -233,7 +232,7 @@
         build() {
             this.element.classList.add('start');
             this.element.style.position = 'absolute';
-            this.element.innerHTML = 'Start';
+            this.element.innerHTML = 'Старт!';
             this.element.style.top = field.top - 50 + 'px';
             field.element.append(this.element);
         }

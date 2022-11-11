@@ -8,45 +8,29 @@
 <body>
     <form name = circle id="Form" >
         Расстояние (диаметр):
-        <input type=text name=Diametr id="Diameter"  value='300'><br />
-        <input type=button value='построить часы' id="click"  >
+        <input type=text name=Diametr id="Diameter"  value='500'><br />
+        <input type=button value='построить часы' id="click"  onclick='add()'>
 </form>
-<br>
 <div class="clock-main">
-    <div class="container" id=containerOn>
+    <div class="clock" id="container">
 
     </div>
 </div>
 <script>
-
     "use strict";
 
-   
- // Создание часов
- function createClock() {
-   
-        // Размер часов
-        let containerCenterX = document.getElementById('Diameter').value;
-        let containerCenterY = document.getElementById('Diameter').value;
+    let formElem = document.getElementById('Form');
+    let clickElem = document.getElementById('click');
+    clickElem.addEventListener('click', function(eo){
+        document.getElementById('container').style.display = "block";
+        formElem.style.display = 'none';
 
-        
-        let clock = document.getElementById('containerOn');
-        clock.style.width = containerCenterX + 'px';
-        clock.style.height = containerCenterY +'px';
-       clock.style.position = 'absolute';
+    });
 
-        clock.style.background = '#fccb66';
-        clock.style.borderRadius = '50%';
-
-
-        clockContainer.append(clock);
-        return clock;
-    }
-
-    const CLOCK = createClock();
-    const CLOCK_SIDE = CLOCK.clientWidth;
-    const CLOCK_RADIUS_X = CLOCK.clientWidth / 2;
-    const CLOCK_RADIUS_Y = CLOCK.clientHeight / 2;
+    const CLOCK = document.querySelector('.clock');
+    const CLOCK_SIDE = document.getElementById('Diameter').value;
+    const CLOCK_RADIUS_X = CLOCK_SIDE/ 2;
+    const CLOCK_RADIUS_Y = CLOCK_SIDE / 2;
 
     const DIAL_SIDE_PROPORTION = CLOCK_SIDE / 10;
     const DIAL_RADIUS_PROPORTION = CLOCK_RADIUS_X * 0.85;
@@ -202,8 +186,6 @@
     }
 
     updateTime();
-
-
 </script>
 </body>
 </html>
