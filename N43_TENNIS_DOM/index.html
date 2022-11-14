@@ -245,12 +245,23 @@
             ball.speedY = (Math.random() < 0.5 ? -2 : 2);
             play();
         }
+        clickStart() {
+            if (ball.speedX && ball.element.className !== 'ball run') {
+            ball.element.classList.add('run');
+            window.requestAnimationFrame(play);
+        }
+        if (ball.speedX === 0) {
+            startButton.update();
+        }
+
+        }
     }
 
+   
     let startButton = new StartButton();
     startButton.build();
 
-    startButton.element.addEventListener('click', start => {
+    startButton.element.addEventListener('click', () => {
         if (ball.speedX && ball.element.className !== 'ball run') {
             ball.element.classList.add('run');
             window.requestAnimationFrame(play);
@@ -289,16 +300,17 @@
             ball.speedX = 0;
             score.updateScore(1, 0);
             ball.speedY =0;
-            startButton.element.removeEventListener('click', start);
-
-
+           
+           
         }
+
+        
 
         if (ball.left < field.left) {
             ball.speedX = 0;
             score.updateScore(0, 1);
             ball.speedY =0;
-            startButton.element.removeEventListener('click', start);
+            
             
         }
 
@@ -313,6 +325,7 @@
         ball.move();
         window.requestAnimationFrame(play);
     }
+
     
     ball.move(); 
 </script>
