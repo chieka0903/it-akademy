@@ -13,7 +13,7 @@
     "use strict";
 
     let div = document.querySelector('.container');
-    let RAF = window.requestAnimationFrame;
+    //let RAF = window.requestAnimationFrame;
 
     const FIELD_WIDTH = 600; // Ширина поля
     const FIELD_HEIGHT = 350; // Высота поля
@@ -22,8 +22,7 @@
     const RACKET_HEIGHT = 90; // Высота ракетки
 
     const BALL_RADIUS = 30; // Радиус мячика
-    const BALL_BACKGROUND = 'url("ball.png")'; // Фон мячика
-
+    
     // Таблица очков
     class ScoreTable {
         constructor() {
@@ -189,6 +188,7 @@
             this.top = 0;
             this.speedX = 2;
             this.speedY = 2;
+            this.moved = 0;
         }
 
         build(radius) {
@@ -253,7 +253,7 @@
     startButton.element.addEventListener('click', () => {
         if (ball.speedX && ball.element.className !== 'ball run') {
             ball.element.classList.add('run');
-            play();
+            window.requestAnimationFrame(play);
         }
         if (ball.speedX === 0) {
             startButton.update();
@@ -268,7 +268,7 @@
 
         racketMove(leftRacket);
         racketMove(rightRacket);
-
+       
         let playerOnePosTop = leftRacket.element.offsetTop;
         let playerOnePosBottom = leftRacket.element.offsetTop + leftRacket.element.offsetHeight;
         let playerTwoPosTop = rightRacket.element.offsetTop;
@@ -287,13 +287,14 @@
         if (ball.left + ball.width > field.width + field.left) {
             ball.speedX = 0;
             score.updateScore(1, 0);
-            return;
+            ball.speedY =0;
         }
 
         if (ball.left < field.left) {
             ball.speedX = 0;
             score.updateScore(0, 1);
-            return;
+            ball.speedY =0;
+            
         }
 
         if (ball.top + ball.height > field.height + field.top) {
@@ -304,9 +305,11 @@
             ball.speedY = -ball.speedY;
         }
 
-        ball.move()
-        RAF(play);
+        ball.move();
+        window.requestAnimationFrame(play);
     }
+    
+    
 </script>
 </body>
 </html>
