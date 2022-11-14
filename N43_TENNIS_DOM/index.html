@@ -13,7 +13,7 @@
     "use strict";
 
     let div = document.querySelector('.container');
-    //let RAF = window.requestAnimationFrame;
+    
 
     const FIELD_WIDTH = 600; // Ширина поля
     const FIELD_HEIGHT = 350; // Высота поля
@@ -250,15 +250,16 @@
     let startButton = new StartButton();
     startButton.build();
 
-    startButton.element.addEventListener('click', () => {
+    startButton.element.addEventListener('click', start => {
         if (ball.speedX && ball.element.className !== 'ball run') {
             ball.element.classList.add('run');
             window.requestAnimationFrame(play);
         }
         if (ball.speedX === 0) {
             startButton.update();
+            
         }
-    });
+    })
 
 
     // Игра
@@ -288,12 +289,16 @@
             ball.speedX = 0;
             score.updateScore(1, 0);
             ball.speedY =0;
+            startButton.element.removeEventListener('click', start);
+
+
         }
 
         if (ball.left < field.left) {
             ball.speedX = 0;
             score.updateScore(0, 1);
             ball.speedY =0;
+            startButton.element.removeEventListener('click', start);
             
         }
 
@@ -309,7 +314,7 @@
         window.requestAnimationFrame(play);
     }
     
-    
+    ball.move(); 
 </script>
 </body>
 </html>
