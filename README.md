@@ -26,6 +26,6 @@ https://chieka0903.github.io/it-akademy/N37_CLOCK_SVG/
 
 https://chieka0903.github.io/it-akademy/N43_TENNIS_DOM/ 
 
-https://chieka0903.github.io/it-akademy/N47_TENIS_SVG/
+https://chieka0903.github.io/it-akademy/N47_TENIS_SVG/ 
 
 https://chieka0903.github.io/it-akademy/N50_TENNIS_CANVAS/
