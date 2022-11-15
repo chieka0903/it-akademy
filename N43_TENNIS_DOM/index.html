@@ -254,13 +254,13 @@
 
     startButton.element.addEventListener('click', () => {
         if(timer) {
-            window.cancelAnimationFrame(timer);
+            cancelAnimationFrame(timer);
             timer = 0;
         }
            
         if (ball.speedX && ball.element.className !== 'ball run') {
             ball.element.classList.add('run');
-            timer = window.requestAnimationFrame(play);
+            timer = requestAnimationFrame(play);
         }
         if (ball.speedX === 0) {
             startButton.update();
@@ -298,19 +298,15 @@
             ball.speedX = 0;
             ball.speedY =0;
            ball.left=(field.width + field.left) - ball.width;
-           window.cancelAnimationFrame(timer);
-            timer = 0;
+           
         }
-
-        
 
         if (ball.left < field.left) {
             score.updateScore(0, 1);
             ball.speedX = 0;
             ball.speedY = 0;
             ball.left = field.left;
-            window.cancelAnimationFrame(timer);
-            timer = 0;
+           
         }
 
         if (ball.top + ball.height > field.height + field.top) {
@@ -322,7 +318,7 @@
         }
 
         ball.move();
-        timer = window.requestAnimationFrame(play);
+       requestAnimationFrame(play);
     }
 
     
