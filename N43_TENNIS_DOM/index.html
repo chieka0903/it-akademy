@@ -13,7 +13,7 @@
     "use strict";
 
     let div = document.querySelector('.container');
-    
+    let timer = 0;
 
     const FIELD_WIDTH = 600; // Ширина поля
     const FIELD_HEIGHT = 350; // Высота поля
@@ -245,16 +245,7 @@
             ball.speedY = (Math.random() < 0.5 ? -2 : 2);
             play();
         }
-        clickStart() {
-            if (ball.speedX && ball.element.className !== 'ball run') {
-            ball.element.classList.add('run');
-            window.requestAnimationFrame(play);
-        }
-        if (ball.speedX === 0) {
-            startButton.update();
-        }
-
-        }
+      
     }
 
    
@@ -262,9 +253,14 @@
     startButton.build();
 
     startButton.element.addEventListener('click', () => {
+        if(timer) {
+            window.cancelAnimationFrame(timer);
+            timer = 0;
+        }
+           
         if (ball.speedX && ball.element.className !== 'ball run') {
             ball.element.classList.add('run');
-            window.requestAnimationFrame(play);
+            timer = window.requestAnimationFrame(play);
         }
         if (ball.speedX === 0) {
             startButton.update();
@@ -289,6 +285,7 @@
         if (ball.left + ball.width > rightRacket.element.offsetLeft &&
             (ball.top + ball.height >= playerTwoPosTop && ball.top <= playerTwoPosBottom)) {
             ball.speedX = -ball.speedX;
+            
         }
 
         if (ball.left < leftRacket.element.offsetLeft + leftRacket.element.offsetWidth &&
@@ -297,21 +294,23 @@
         }
 
         if (ball.left + ball.width > field.width + field.left) {
-            ball.speedX = 0;
             score.updateScore(1, 0);
+            ball.speedX = 0;
             ball.speedY =0;
-           
-           
+           ball.left=(field.width + field.left) - ball.width;
+           window.cancelAnimationFrame(timer);
+            timer = 0;
         }
 
         
 
         if (ball.left < field.left) {
-            ball.speedX = 0;
             score.updateScore(0, 1);
-            ball.speedY =0;
-            
-            
+            ball.speedX = 0;
+            ball.speedY = 0;
+            ball.left = field.left;
+            window.cancelAnimationFrame(timer);
+            timer = 0;
         }
 
         if (ball.top + ball.height > field.height + field.top) {
@@ -323,7 +322,7 @@
         }
 
         ball.move();
-        window.requestAnimationFrame(play);
+        timer = window.requestAnimationFrame(play);
     }
 
     
