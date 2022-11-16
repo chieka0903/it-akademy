@@ -1,3 +1,3 @@
 
 
-https://chieka0903.github.io/it-akademy/MOMENTUM/dist/
+https://chieka0903.github.io/it-akademy/MOMENTUM/dist/index.html
