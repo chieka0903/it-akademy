@@ -605,26 +605,6 @@ input[type='radio']:checked::after {
   font-size: 13px;
 }
 
-.social {
-  display: flex;
-  align-items: flex-end;
-}
-
-.social__rs {
-  margin-right: 5px;
-  background: url('../svg/rs_school.svg') no-repeat;
-  background-size: 50px 30px;
-  width: 50px;
-  height: 30px;
-}
-
-.social__github {
-  margin-right: 5px;
-  background: url('../svg/github.svg') no-repeat;
-  background-size: 30px 30px;
-  width: 30px;
-  height: 30px;
-}
 
 .toDo {
   flex-shrink: 0;
