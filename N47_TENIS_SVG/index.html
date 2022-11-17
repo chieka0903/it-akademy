@@ -306,7 +306,8 @@
     startButton.element.addEventListener('click', () => {
         if (startButton.animate) {
             startButton.animate = false;
-            window.requestAnimationFrame(play);
+            //window.requestAnimationFrame(play);
+            play();
         }
         if (ball.speedX === 0) {
             startButton.update();
