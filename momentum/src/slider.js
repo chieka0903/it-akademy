@@ -28,7 +28,7 @@ export const setBg = () => {
   const timeOfDay = getTimeOfDayEn();
   const bgNum = randomNum.toString().padStart(2, '0');
   const image = new Image();
-  image.src = `https://raw.githubusercontent.com/chieka0903/momentum-backgrounds/main/images/${timeOfDay}/${bgNum}.webp`;
+  image.src = `https://raw.githubusercontent.com/chieka0903/momentum-backgrounds/main/momentum-backgrounds-main/images/${timeOfDay}/${bgNum}.webp`;
   image.addEventListener('load', () => {
     body.style.backgroundImage = `url(${image.src})`;
   });
