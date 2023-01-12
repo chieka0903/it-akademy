@@ -10,7 +10,7 @@ body {
 }
 
 
-.navigation {
+navigation {
     background-color:#1E2939;
     text-align: right;
     padding: 20px 20px 20px 0;
@@ -18,11 +18,11 @@ body {
     margin-top: 30px;
 }
 
-.navigation li a {
+navigation li a {
     color: #F5F7FA;
 }
 
-.navigation li {
+navigation li {
     display: inline;
     margin-left: 10px;  
 }
