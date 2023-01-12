@@ -1,0 +1,172 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F7FA;
+    width: 1000px;
+    margin: 40px auto;
+}
+
+.clearfix {
+    background-color: #1E2939;
+}
+
+
+.navigation {
+    background-color:#1E2939;
+    text-align: right;
+    padding: 20px 20px 20px 0;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.navigation li a {
+    color: #F5F7FA;
+}
+
+.navigation li {
+    display: inline;
+    margin-left: 10px;  
+}
+
+.side-bar-section {
+    width: 370px;
+    float:left;
+    background-color:#1E2939;
+    color: #F5F7FA;
+    padding:5 10 10 20;
+}
+
+.photo {
+    float: left;
+    width: 90%;
+    margin: 20px;
+
+}
+
+.contact-skills-section {
+    margin-left: 40px;
+    margin-bottom: 70px;
+}
+.sidebar-title {
+    font-size: 22px;
+}
+
+.mailto{
+    margin-right: 24px;
+}
+
+.contact {
+    margin-right: 8px;
+}
+.contact-skills-section-number {
+    color: #565E6A;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.contact-skills-section-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+}
+
+.tech-soft-skills-item {
+    color:#FB6D3A;
+}
+
+.main-content {
+    margin-left: 370px;
+    background-color: #F5F7FA;
+    padding-bottom: 20px;
+}
+.main-bottom {
+    clear: both;
+}
+
+.about-me-my-name {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.about-me-profession {
+    font-size: 15px;
+}
+
+.main-about-me-section {
+   margin-left: 40px; 
+}
+
+.main-code-examples {
+    margin-left: 40px;
+}
+
+.code {
+    font-size: 15px;
+    margin: 0;
+}
+
+.main-experience {
+    margin-left: 40px;
+    font-size: 16px;
+}
+
+.main-name-company {
+    color: #FB6D3A;
+}
+
+.my-work-expiriens-position {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+}
+
+.main-date {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #A8A8A8;
+    margin: 0 0 10px 0;
+}
+
+.my-work-expiriens-duties {
+    padding: 0 0 0 18px;
+}
+
+.my-work-expiriens-duty {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #595959;
+}
+
+.main-education {
+    margin-left: 40px;
+}
+
+.my-education-speciality {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+    margin: 10px 0 8px 0;
+}
+
+.logo {
+    fill: #A8A8A8;
+}
+
+.by-name {
+    float: left;
+    color: #A8A8A8;
+    margin-top: 0;
+    margin-left: 40px;
+    margin-bottom: 0; 
+}
