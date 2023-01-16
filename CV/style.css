@@ -2,7 +2,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #F5F7FA;
     width: 1000px;
-    margin: 30px auto;
+    margin: 10px auto;
 }
 
 .clearfix {
@@ -138,6 +138,7 @@ navigation li {
 
 .my-work-expiriens-duties {
     padding: 0 0 0 18px;
+    margin: 12px auto;
 }
 
 .my-work-expiriens-duty {
